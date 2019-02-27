@@ -1,6 +1,6 @@
 {
   "name": "fangzhouconsistencymessage",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple message sending error detection mechanism based on Node.js udp.",
   "main": "index.js",
   "scripts": {
