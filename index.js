@@ -233,3 +233,14 @@ function messageDistribution(originMessage, address, port) {
     }
 }
 module.exports.messageDistribution = messageDistribution;
+
+/**
+ * reset all the members(MLT BMQ IMTM OMTM)
+ */
+function reset(){
+    MLT = {};
+    BMQ = {};
+    IMTM = {};
+    OMTM = {};
+}
+module.exports.reset = reset;
