@@ -219,12 +219,15 @@ module.exports.sendCallback = sendCallback;
 function messageDistribution(originMessage, address, port) {
     try {
         let msg = JSON.parse(originMessage);
-        if (IMTM[msg.typeName] == null) {
-            return false;
-        }
         if (msg.callback == false) {
+            if (IMTM[msg.typeName] == null) {
+                return false;
+            }
             IMTM[msg.typeName].receiveAction(msg.typeName, address, port, msg.data);
         } else {
+            if (OMTM[msg.typeName] == null) {
+                return false;
+            }
             OMTM[msg.typeName].completionAction(msg.typeName, address, port, msg.data);
             reAlive(msg.typeName);
         }
