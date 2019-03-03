@@ -19,7 +19,7 @@ let IMTM = {};
 let OMTM = {};
 
 /**
- * @todo create a message type
+ * @todo create a message type which is unique
  * @param {string} typeName Names of message types, each of which is unique
  * @param {function} completionAction If a return message from B is received in "MST": A does not need to wait any longer, and the marking of such message by "MST" will be cancelled, triggering the action at the same time.
  * @param {function} timeoutAction If the "MST" is exceeded and the "Class A message" has not received the retaliation message from the host B, the tag of "Class A message" will be cancelled, and the timeout action of the consistent message will be triggered.
