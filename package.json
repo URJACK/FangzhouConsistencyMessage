@@ -1,8 +1,13 @@
 {
-  "name": "fangzhouconsistencymessage",
-  "version": "1.0.1",
-  "description": "A simple message sending error detection mechanism based on Node.js udp.",
+  "name": "fzcnmsg",
+  "version": "1.0.0",
+  "description": "",
   "main": "index.js",
+  "directories": {
+    "doc": "doc",
+    "lib": "lib",
+    "test": "test"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

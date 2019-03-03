@@ -155,7 +155,7 @@ function transmitData(typeName, ip, port, data) {
     //set Interval to trigger timer
     let outMessageType = OMTM[typeName];
     outMessageType.timer = setTimeout(function () {
-        outMessageType.timeoutAction(typeName, ip, port);
+        outMessageType.timeoutAction(typeName, ip, port, data);
         reAlive(typeName);
     }, outMessageType.messageSurvivalTime);
 }
@@ -237,7 +237,7 @@ module.exports.messageDistribution = messageDistribution;
 /**
  * reset all the members(MLT BMQ IMTM OMTM)
  */
-function reset(){
+function reset() {
     MLT = {};
     BMQ = {};
     IMTM = {};
