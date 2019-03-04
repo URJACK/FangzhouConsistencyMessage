@@ -26,13 +26,14 @@ let OMTM = {};
  * @param {number} messageSurvivalTime A usually needs to wait for B's feedback. This period is called messageSurvivalTime
  * @returns is success create Message? 
  */
-function createMessage(typeName, completionAction, timeoutAction, messageSurvivalTime) {
+function createMessage(typeName, completionAction, timeoutAction, messageSurvivalTime, needCallback) {
     if (OMTM[typeName] == null) {
         let messageType = new Object();
         OMTM[typeName] = messageType;
         messageType.completionAction = completionAction;
         messageType.timeoutAction = timeoutAction;
         messageType.messageSurvivalTime = messageSurvivalTime;
+        messageType.needCallback = needCallback;
         MLT[typeName] = false;
         BMQ[typeName] = new Array();
         return true;
@@ -154,7 +155,7 @@ function transmitData(typeName, ip, port, data) {
     });
     //set Interval to trigger timer
     let outMessageType = OMTM[typeName];
-    if (outMessageType.messageSurvivalTime != null && outMessageType.messageSurvivalTime != 0) {
+    if (outMessageType.needCallback == true) {
         outMessageType.timer = setTimeout(function () {
             outMessageType.timeoutAction(typeName, ip, port, data);
             reAlive(typeName);
