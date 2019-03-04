@@ -44,8 +44,6 @@ BMQ这种数据结构与MST具有密不可分的联系，首先，BMQ要想增�
 四个参数带参函数，参数分别是：
 
 报文的类型名，接收方的IP地址，接收方的端口，发送失败的报文数据
-
-如果MST被设置为0，则本次消息，不再会触发TA。
 #### 1.6.4`接受动作RA
 四个参数带参函数，参数分别是：
 
@@ -65,8 +63,8 @@ CM.createMessage(typeName,completionAction,timeoutAction,messageSurvivalTime);
 //摧毁某类报文 参数分别为：报文类名
 CM.destoryMessage(typeName);
 
-//发送报文 参数分别为：报文类名，目标IP，目标端口，发送数据
-CM.sendMessage(typeName,desIP,desPort,data);
+//发送报文 参数分别为：报文类名，目标IP，目标端口，发送数据，是否需要回调函数
+CM.sendMessage(typeName,desIP,desPort,data,needCallback);
 
 //创建接受器 参数分别为：报文类名，接受动作
 CM.createReceiver(typeName,receiveAction);

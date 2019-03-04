@@ -24,6 +24,7 @@ let OMTM = {};
  * @param {function} completionAction If a return message from B is received in "MST": A does not need to wait any longer, and the marking of such message by "MST" will be cancelled, triggering the action at the same time.
  * @param {function} timeoutAction If the "MST" is exceeded and the "Class A message" has not received the retaliation message from the host B, the tag of "Class A message" will be cancelled, and the timeout action of the consistent message will be triggered.
  * @param {number} messageSurvivalTime A usually needs to wait for B's feedback. This period is called messageSurvivalTime
+ * @param {bool} needCallback is it need counterpart's callback? 
  * @returns is success create Message? 
  */
 function createMessage(typeName, completionAction, timeoutAction, messageSurvivalTime, needCallback) {
@@ -160,6 +161,8 @@ function transmitData(typeName, ip, port, data) {
             outMessageType.timeoutAction(typeName, ip, port, data);
             reAlive(typeName);
         }, outMessageType.messageSurvivalTime);
+    }else{
+        reAlive(typeName);
     }
 }
 /**
