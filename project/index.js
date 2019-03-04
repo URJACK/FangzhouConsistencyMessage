@@ -154,10 +154,12 @@ function transmitData(typeName, ip, port, data) {
     });
     //set Interval to trigger timer
     let outMessageType = OMTM[typeName];
-    outMessageType.timer = setTimeout(function () {
-        outMessageType.timeoutAction(typeName, ip, port, data);
-        reAlive(typeName);
-    }, outMessageType.messageSurvivalTime);
+    if (outMessageType.messageSurvivalTime != null && outMessageType.messageSurvivalTime != 0) {
+        outMessageType.timer = setTimeout(function () {
+            outMessageType.timeoutAction(typeName, ip, port, data);
+            reAlive(typeName);
+        }, outMessageType.messageSurvivalTime);
+    }
 }
 /**
  * check BMQ's data,try to push them
